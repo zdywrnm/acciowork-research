@@ -1,0 +1,27 @@
+/Applications/Accio.app/Contents/Frameworks
+Accio Helper (GPU).app
+Accio Helper (GPU).app/Contents
+Accio Helper (Plugin).app
+Accio Helper (Plugin).app/Contents
+Accio Helper (Renderer).app
+Accio Helper (Renderer).app/Contents
+Accio Helper.app
+Accio Helper.app/Contents
+Electron Framework.framework
+Electron Framework.framework/Electron Framework
+Electron Framework.framework/Helpers
+Electron Framework.framework/Libraries
+Electron Framework.framework/Resources
+Electron Framework.framework/Versions
+Mantle.framework
+Mantle.framework/Mantle
+Mantle.framework/Resources
+Mantle.framework/Versions
+ReactiveObjC.framework
+ReactiveObjC.framework/ReactiveObjC
+ReactiveObjC.framework/Resources
+ReactiveObjC.framework/Versions
+Squirrel.framework
+Squirrel.framework/Resources
+Squirrel.framework/Squirrel
+Squirrel.framework/Versions

@@ -1,0 +1,18 @@
+PATTERN createRoot IDX -1
+PATTERN jsx IDX 2167
+essional",_e={en:"English",zh:"中文",es:"Español",pt:"Português",fr:"Français",de:"Deutsch"};function Ae({name:t,sessionCount:a,jobs:s}){const[n,i]=r.useState(!1),{t:l}=me("agents"),o=s.length;return e.jsxs("div",{children:[e.jsxs("p",{children:[l("confirm.deleteAgentPrefix",{name:t,count:a}),e.jsxs("button",{type:"button",onClick:()=>i(e=>!e),className:"inline-flex items-center gap-0.5 text-primary hover:underline cursor-pointer font-medium",children:[l("confirm.deleteAgentJobsLink",{jobCount:o}),e.jsx(c,{name:n?"expand_less":"expand_more",size:14,className:"shrink-0"})]}),l("confirm.deleteAgentSuffix",{name:t})]}),n&&e.jsx("ul",{className:"mt-2 space-y-1 max-h-32 overflow-y-auto rounded-md bg-zinc-50 dark:bg-zinc-800/50 px-3 py-2",children:s.map((t,a)=>e.jsxs("li",{className:"text-xs text-
+---
+PATTERN useState IDX 2115
+ly","creative","concise","casual","expert"],Ce="professional",_e={en:"English",zh:"中文",es:"Español",pt:"Português",fr:"Français",de:"Deutsch"};function Ae({name:t,sessionCount:a,jobs:s}){const[n,i]=r.useState(!1),{t:l}=me("agents"),o=s.length;return e.jsxs("div",{children:[e.jsxs("p",{children:[l("confirm.deleteAgentPrefix",{name:t,count:a}),e.jsxs("button",{type:"button",onClick:()=>i(e=>!e),className:"inline-flex items-center gap-0.5 text-primary hover:underline cursor-pointer font-medium",children:[l("confirm.deleteAgentJobsLink",{jobCount:o}),e.jsx(c,{name:n?"expand_less":"expand_more",size:14,className:"shrink-0"})]}),l("confirm.deleteAgentSuffix",{name:t})]}),n&&e.jsx("ul",{className:"mt-2 space-y-1 max-h-32 overflow-y-auto rounded-md bg-zinc-50 dark:bg-zinc-800/50 px-3 py-2",childre
+---
+PATTERN useEffect IDX 10128
+im().toLowerCase();return Ea.filter(t=>A(at,t).includes(e))},[Ea,Ia,at]);const[Fa,Oa]=r.useState(null),[Va,Da]=r.useState(null),[$a,Ua]=r.useState(""),[Ra,Ba]=r.useState("my"),[Ga,Ha]=r.useState(1);r.useEffect(()=>{Ha(1)},[$a,Ra]);const Wa=r.useMemo(()=>D.filter(e=>!e.creator||"user"===e.creator),[D]),Ja=r.useMemo(()=>D.filter(e=>e.creator&&"user"!==e.creator),[D]),Ya="my"===Ra?Wa:Ja,qa=r.useMemo(()=>{if(!$a.trim())return Ya;const e=$a.toLowerCase();return Ya.filter(t=>t.metadata.name.toLowerCase().includes(e)||t.metadata.description&&t.metadata.description.toLowerCase().includes(e))},[Ya,$a]),Ka=Math.ceil(qa.length/12),Qa=qa.slice(12*(Ga-1),12*Ga);r.useEffect(()=>{ke.pageSnapshot({name:"AgentsPage",route:"/agents",input:{activeTab:Ra,searchActive:$a.trim().length>0,filteredCount:qa.length
+---
+PATTERN react-router IDX -1
+PATTERN zustand IDX -1
+PATTERN redux IDX -1
+PATTERN mobx IDX -1
+PATTERN jotai IDX -1
+PATTERN @radix-ui IDX -1
+PATTERN antd IDX -1
+PATTERN arco IDX -1

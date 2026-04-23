@@ -1,0 +1,193 @@
+[
+  {
+    "provider": "accio",
+    "providerDisplayName": "Accio",
+    "modelList": [
+      {
+        "modelDisplayName": "标准",
+        "modelCode": "1Nexus-R3wF8qJ5vB6h",
+        "modelName": "1Nexus-R3wF8qJ5vB6h",
+        "multimodal": true,
+        "visible": true,
+        "reasoningEfforts": [
+          "low",
+          "high"
+        ],
+        "defaultReasoningEffort": "low",
+        "contextWindow": 1000000,
+        "isDefault": true,
+        "modelDesc": "均衡通用，适合大多数任务",
+        "usageLevel": 1,
+        "usageDesc": "中成本",
+        "freeUse": true
+      },
+      {
+        "modelDisplayName": "专业",
+        "modelCode": "1Orbit-I9eY4tK8bW1f",
+        "modelName": "1Orbit-I9eY4tK8bW1f",
+        "multimodal": true,
+        "visible": true,
+        "reasoningEfforts": [
+          "low",
+          "medium",
+          "high",
+          "max"
+        ],
+        "defaultReasoningEffort": "low",
+        "contextWindow": 1000000,
+        "isDefault": false,
+        "modelDesc": "更强推理与生成，适合复杂任务",
+        "usageLevel": 2,
+        "usageDesc": "高成本",
+        "freeUse": true
+      },
+      {
+        "modelDisplayName": "极致✨",
+        "modelCode": "1Orbit-Q7hN3xR6cP2m",
+        "modelName": "1Orbit-Q7hN3xR6cP2m",
+        "multimodal": true,
+        "visible": true,
+        "reasoningEfforts": [
+          "low",
+          "medium",
+          "high",
+          "max"
+        ],
+        "defaultReasoningEffort": "low",
+        "contextWindow": 1000000,
+        "isDefault": false,
+        "modelDesc": "适合关键任务的最新旗舰模型",
+        "usageLevel": 3,
+        "usageDesc": "极高成本",
+        "freeUse": true
+      },
+      {
+        "modelDisplayName": "Qwen 3.6 Plus",
+        "modelCode": "1Drift-V4jL6mX3yE8d",
+        "modelName": "1Drift-V4jL6mX3yE8d",
+        "multimodal": false,
+        "visible": true,
+        "reasoningEfforts": null,
+        "defaultReasoningEffort": null,
+        "contextWindow": 991808,
+        "isDefault": false,
+        "modelDesc": "稳定通用，适合日常工作流",
+        "usageLevel": 1,
+        "usageDesc": "中成本",
+        "freeUse": true
+      },
+      {
+        "modelDisplayName": "Qwen 3.6 Max",
+        "modelCode": "1Drift-T2nB5kS9aU7w",
+        "modelName": "1Drift-T2nB5kS9aU7w",
+        "multimodal": false,
+        "visible": true,
+        "reasoningEfforts": null,
+        "defaultReasoningEffort": null,
+        "contextWindow": 262144,
+        "isDefault": false,
+        "modelDesc": "理解与生成更强，适合进阶任务",
+        "usageLevel": 2,
+        "usageDesc": "高成本",
+        "freeUse": true
+      },
+      {
+        "modelDisplayName": "Qwen 3 Max",
+        "modelCode": "1Drift-T2nB5kS9aU7w",
+        "modelName": "1Drift-T2nB5kS9aU7w",
+        "multimodal": false,
+        "visible": false,
+        "reasoningEfforts": null,
+        "defaultReasoningEffort": null,
+        "contextWindow": 262144,
+        "isDefault": false,
+        "modelDesc": "理解与生成更强，适合进阶任务",
+        "usageLevel": 0,
+        "usageDesc": "低成本",
+        "freeUse": true
+      },
+      {
+        "modelDisplayName": "Kimi K2.5",
+        "modelCode": "1Synapse-G5aJ8wL1dV4s",
+        "modelName": "1Synapse-G5aJ8wL1dV4s",
+        "multimodal": true,
+        "visible": true,
+        "reasoningEfforts": null,
+        "defaultReasoningEffort": null,
+        "contextWindow": 256000,
+        "isDefault": false,
+        "modelDesc": "长文与综合任务更稳，适合复杂工作流",
+        "usageLevel": 2,
+        "usageDesc": "高成本",
+        "freeUse": true
+      },
+      {
+        "modelDisplayName": "GLM 5.1",
+        "modelCode": "1Chronos-dX3cV9sA2mK7",
+        "modelName": "1Chronos-dX3cV9sA2mK7",
+        "multimodal": false,
+        "visible": true,
+        "reasoningEfforts": null,
+        "defaultReasoningEffort": null,
+        "contextWindow": 200000,
+        "isDefault": false,
+        "modelDesc": "推理更强，适合复杂分析任务",
+        "usageLevel": 2,
+        "usageDesc": "高成本",
+        "freeUse": true
+      },
+      {
+        "modelDisplayName": "MiniMax M2.5",
+        "modelCode": "1Zenith-X4bC7jT1mZ8q",
+        "modelName": "1Zenith-X4bC7jT1mZ8q",
+        "multimodal": true,
+        "visible": true,
+        "reasoningEfforts": null,
+        "defaultReasoningEffort": null,
+        "contextWindow": 204800,
+        "isDefault": false,
+        "modelDesc": "响应更快，适合高频轻任务",
+        "usageLevel": 0,
+        "usageDesc": "低成本",
+        "freeUse": true
+      },
+      {
+        "modelDisplayName": "Gemini 3.1 Flash Image Preview",
+        "modelCode": "1Nexus-k7Tg9Xm2pL4n",
+        "modelName": "1Nexus-k7Tg9Xm2pL4n",
+        "multimodal": true,
+        "visible": false,
+        "reasoningEfforts": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "defaultReasoningEffort": "low",
+        "contextWindow": 131072,
+        "isDefault": false,
+        "modelDesc": "Flash 速度的图像生成",
+        "usageLevel": 1,
+        "usageDesc": "中成本",
+        "freeUse": true
+      },
+      {
+        "modelDisplayName": "Gemini 3 Pro Image Preview",
+        "modelCode": "1Nexus-Y1cN4sD7eA9x",
+        "modelName": "1Nexus-Y1cN4sD7eA9x",
+        "multimodal": true,
+        "visible": false,
+        "reasoningEfforts": [
+          "low",
+          "high"
+        ],
+        "defaultReasoningEffort": "low",
+        "contextWindow": 65536,
+        "isDefault": false,
+        "modelDesc": "Pro 品质的图像生成",
+        "usageLevel": 2,
+        "usageDesc": "高成本",
+        "freeUse": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "CFBundleExecutable" => "Electron Framework"
+  "CFBundleIdentifier" => "com.github.Electron.framework"
+  "CFBundleName" => "Electron Framework"
+  "CFBundlePackageType" => "FMWK"
+  "CFBundleVersion" => "35.7.5"
+  "DTCompiler" => "com.apple.compilers.llvm.clang.1_0"
+  "DTSDKBuild" => "23F73"
+  "DTSDKName" => "macosx14.5"
+  "DTXcode" => "1540"
+  "DTXcodeBuild" => "15F31d"
+  "LSEnvironment" => {
+    "MallocNanoZone" => "0"
+  }
+  "NSSupportsAutomaticGraphicsSwitching" => true
+}

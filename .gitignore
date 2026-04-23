@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs / temp
+*.log
+*.tmp
+*.temp
+
+# Sensitive raw captures (keep only redacted public variants)
+07-raw-evidence/*.har
+07-raw-evidence/*.pcap
+07-raw-evidence/*.pcapng
+07-raw-evidence/*.mitm
+07-raw-evidence/*.trace
+07-raw-evidence/*.raw
+07-raw-evidence/*-raw.*
+07-raw-evidence/*-unredacted.*
+07-raw-evidence/*-private.*
+07-raw-evidence/*-cookies.*
+07-raw-evidence/*-headers.*
+07-raw-evidence/*-body.*
+07-raw-evidence/private/

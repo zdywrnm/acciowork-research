@@ -1,0 +1,25 @@
+// Accio Agent 配置，可由 UI 或 API 修改
+
+{
+  "id": "<AGENT_ID>",
+  "accountId": "<ACCOUNT_ID>",
+  "name": "Accio",
+  "avatar": "avatar.svg",
+  "description": "A general-purpose assistant for everyday tasks — writing, planning, research, summarization, Q&A, and light productivity.",
+  "toolPreset": "full",
+  "templateId": "daily-assistant",
+  "templateVersion": "1.0.0",
+  "runtime": "local",
+  "creator": "user",
+  "agentType": "daily-assistant",
+  "model": {
+    "provider": "auto",
+    "name": "auto"
+  },
+  "defaultProject": {
+    "dir": "/Users/<user>/.accio/accounts/<ACCOUNT_ID>/agents/<AGENT_ID>/project"
+  },
+  "localMemoryIndex": true,
+  "createdAt": "2026-04-23T05:02:27.890Z",
+  "updatedAt": "2026-04-23T05:02:27.890Z"
+}

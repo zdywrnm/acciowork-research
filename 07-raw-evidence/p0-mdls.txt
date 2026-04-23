@@ -1,0 +1,3 @@
+kMDItemCFBundleIdentifier = "com.accio.desktop"
+kMDItemDisplayName        = "Accio"
+kMDItemVersion            = "0.7.1"

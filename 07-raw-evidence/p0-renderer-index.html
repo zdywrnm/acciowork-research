@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="aplus-core" content="aplus.js">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)" />
+    <!-- 字体优先加载：Noto Sans 与 Material Symbols 图标，避免页面完成后 icon 不显示 -->
+    <link rel="preload" href="./fonts/Noto-Sans-regular.woff2" as="font" type="font/woff2" />
+    <link rel="stylesheet" href="./icon-fonts.css" />
+    <title>Accio</title>
+    <script>
+      (function(w, d, s, q) {
+        w[q] = w[q] || [];
+        function insertScript(id, src, onError) {
+          var f = d.getElementsByTagName(s)[0];
+          var j = d.createElement(s);
+          j.async = true;
+          j.id = id;
+          j.setAttribute('exparams','userid=&aplus&sidx=aplusSidex&ckx=aplusCkx');
+          j.src = src;
+          j.crossorigin = 'anonymous';
+          if (typeof onError === 'function') j.onerror = onError;
+          f.parentNode.insertBefore(j, f);
+        }
+
+        // file:// 打包环境优先走本地脚本，避免协议相对 URL 解析为 file://g.alicdn.com/*
+        insertScript('beacon-aplus-local', './vendor/aplus_v2.js', function() {
+          insertScript('beacon-aplus-remote', 'https://g.alicdn.com/alilog/mlog/aplus_v2.js');
+        });
+      })(window, document, 'script', 'aplus_queue');
+    </script>
+    <script type="module" crossorigin src="./assets/index-Bg1vcTG7.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index--ZNxJc3u.css">
+  </head>
+  <body class="antialiased overscroll-none text-sm overflow-hidden">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root" class="flex flex-col h-dvh"></div>
+  </body>
+</html>
+

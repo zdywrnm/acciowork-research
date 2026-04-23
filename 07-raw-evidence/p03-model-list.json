@@ -1,0 +1,90 @@
+[
+  {
+    "display": "标准",
+    "code": "1Nexus-R3wF8qJ5vB6h",
+    "provider": "accio",
+    "multimodal": true,
+    "visible": true,
+    "context": 1000000
+  },
+  {
+    "display": "专业",
+    "code": "1Orbit-I9eY4tK8bW1f",
+    "provider": "accio",
+    "multimodal": true,
+    "visible": true,
+    "context": 1000000
+  },
+  {
+    "display": "极致✨",
+    "code": "1Orbit-Q7hN3xR6cP2m",
+    "provider": "accio",
+    "multimodal": true,
+    "visible": true,
+    "context": 1000000
+  },
+  {
+    "display": "Qwen 3.6 Plus",
+    "code": "1Drift-V4jL6mX3yE8d",
+    "provider": "accio",
+    "multimodal": false,
+    "visible": true,
+    "context": 991808
+  },
+  {
+    "display": "Qwen 3.6 Max",
+    "code": "1Drift-T2nB5kS9aU7w",
+    "provider": "accio",
+    "multimodal": false,
+    "visible": true,
+    "context": 262144
+  },
+  {
+    "display": "Qwen 3 Max",
+    "code": "1Drift-T2nB5kS9aU7w",
+    "provider": "accio",
+    "multimodal": false,
+    "visible": false,
+    "context": 262144
+  },
+  {
+    "display": "Kimi K2.5",
+    "code": "1Synapse-G5aJ8wL1dV4s",
+    "provider": "accio",
+    "multimodal": true,
+    "visible": true,
+    "context": 256000
+  },
+  {
+    "display": "GLM 5.1",
+    "code": "1Chronos-dX3cV9sA2mK7",
+    "provider": "accio",
+    "multimodal": false,
+    "visible": true,
+    "context": 200000
+  },
+  {
+    "display": "MiniMax M2.5",
+    "code": "1Zenith-X4bC7jT1mZ8q",
+    "provider": "accio",
+    "multimodal": true,
+    "visible": true,
+    "context": 204800
+  },
+  {
+    "display": "Gemini 3.1 Flash Image Preview",
+    "code": "1Nexus-k7Tg9Xm2pL4n",
+    "provider": "accio",
+    "multimodal": true,
+    "visible": false,
+    "context": 131072
+  },
+  {
+    "display": "Gemini 3 Pro Image Preview",
+    "code": "1Nexus-Y1cN4sD7eA9x",
+    "provider": "accio",
+    "multimodal": true,
+    "visible": false,
+    "context": 65536
+  }
+]
