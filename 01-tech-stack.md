@@ -19,6 +19,7 @@ The evidence is strong enough to treat it as:
 4. Tailwind-like utility CSS in the renderer
 5. Native capability bridges via `node-pty`, `better-sqlite3`, `sqlite-vec`, `sharp`, `@napi-rs/canvas`
 6. Electron-native update channel with `electron-updater` + `Squirrel.framework`
+7. Local edge services for `MCP gateway`, `security-guard signing`, and `browser relay / direct CDP`
 
 ## Evidence Table
 
@@ -36,6 +37,9 @@ The evidence is strong enough to treat it as:
 | Auto-update | Generic update URL + beta channel + Squirrel | [p0-package.json](/Users/a1-6/research/acciowork/07-raw-evidence/p0-package.json), [app-update.yml](/Applications/Accio.app/Contents/Resources/app-update.yml:1) |
 | Browser automation hints | Bundled Chrome extension + `cdp-*` chunks + `chrome-extension/accio-browser-relay` | [p0-asar-key-paths.txt](/Users/a1-6/research/acciowork/07-raw-evidence/p0-asar-key-paths.txt), [manifest.json](/Applications/Accio.app/Contents/Resources/chrome-extension/accio-browser-relay/manifest.json:1) |
 | MCP/local tooling hints | `Resources/accio-mcp-cli/accio-mcp.mjs` exists in bundle | [p0-resources.txt](/Users/a1-6/research/acciowork/07-raw-evidence/p0-resources.txt) |
+| Local MCP edge | Desktop app exposes localhost `4097` gateway; CLI talks to `/mcp/proxy`, `/mcp/oauth`, `/mcp/custom` | [p03-mcp-cli-entry.md](/Users/a1-6/research/acciowork/07-raw-evidence/p03-mcp-cli-entry.md) |
+| Browser dual path | Relay extension defaults to ports `9234/9236`; runtime fallback to raw CDP `9222` observed | [p03-browser-relay-handshake.md](/Users/a1-6/research/acciowork/07-raw-evidence/p03-browser-relay-handshake.md), [p04-browser-dual-path.md](/Users/a1-6/research/acciowork/07-raw-evidence/p04-browser-dual-path.md) |
+| Gateway request signing | Native `security_guard.node` plus transport interceptor adds `sg_k` before network send | [p03-sgk-security-guard.md](/Users/a1-6/research/acciowork/07-raw-evidence/p03-sgk-security-guard.md) |
 
 ## Bundle Structure
 
@@ -168,6 +172,21 @@ These point to an architecture that includes:
 - agent pairing/approval flows
 - child session persistence
 
+## Local Runtime Edges
+
+Three local edge services now have direct evidence:
+
+1. `MCP Gateway`
+   - `Accio.app` listens on local port `4097`
+   - `accio-mcp.mjs` is a thin CLI over `http://127.0.0.1:4097/mcp/*`
+   - non-loopback requests are rejected with `403 Forbidden`
+2. `Security Guard`
+   - the bundle carries `@phoenix-common/security-guard` plus native `security_guard.node`
+   - request signing is injected before LLM traffic leaves the desktop app
+3. `Browser Bridge`
+   - preferred path is a Chrome relay extension with control port `9234` and relay port `9236`
+   - observed runtime fallback is direct Chrome discovery on port `9222`
+
 ## First-Pass Architecture Sketch
 
 ```mermaid
@@ -176,11 +195,15 @@ flowchart TD
   B --> C["Renderer\nReact app"]
   B --> D["Native Bridges\nnode-pty / SQLite / sharp / canvas"]
   B --> E["Tool Runtime\nload-tool-registry / chunked-exec"]
-  B --> F["Browser Bridge\nCDP + Chrome Relay extension"]
+  B --> F["Browser Bridge\nRelay extension or Direct CDP"]
+  B --> K["Local Gateway\nlocalhost:4097 /mcp/*"]
+  B --> L["Security Guard\nclient-side sg_k signing"]
   B --> G["Updater\nelectron-updater + Squirrel"]
   C --> H["@phoenix/ui"]
   C --> I["@phoenix/app / common / sdk"]
   D --> J["Local agent state\nfiles + SQLite + vectors"]
+  K --> M["accio-mcp.mjs CLI"]
+  F --> N["Chrome tabs / port 9222"]
 ```
 
 ## Open Questions for Next Stage

@@ -67,10 +67,18 @@
 │   ├── p02-vector-memory-status.txt
 │   ├── p02-vector-schema.txt
 │   ├── p03-browser-relay-handshake.md
+│   ├── p03-live-model-families.redacted.md
 │   ├── p03-model-list-full.json
 │   ├── p03-model-list.json
 │   ├── p03-model-memory-clues.txt
-│   └── p03-routing-sample.redacted.json
+│   ├── p03-mcp-cli-entry.md
+│   ├── p03-routing-sample.redacted.json
+│   ├── p03-sgk-security-guard.md
+│   ├── p03-system-prompt-compare.redacted.json
+│   ├── p04-browser-dual-path.md
+│   ├── p04-browser-subagent-timeline.redacted.md
+│   ├── p1-adk-tenant-probe.md
+│   └── p1-dingtalk-neulink-search.md
 └── 08-operation-log.md
 ```
 

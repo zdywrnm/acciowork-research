@@ -1,0 +1,32 @@
+{
+  "appVersion": "0.7.1",
+  "captureDate": "2026-04-23",
+  "comparisonScope": "main round=0 request only",
+  "families": {
+    "nexus": {
+      "uiLabel": "标准",
+      "model": "1Nexus-R3wF8qJ5vB6h",
+      "systemHash": "ec578e2ee3c9a9fc5e23264380fb2915b3716b0a9e97cb75dcc9edd6f5376bfb",
+      "systemLen": 39464,
+      "toolHash": "4adffcef4e227ab64bc6d13ce1d2409ce4fce67da12416a21806fe824641963c",
+      "toolCount": 32
+    },
+    "orbit": {
+      "uiLabel": "专业",
+      "model": "1Orbit-I9eY4tK8bW1f",
+      "systemHash": "ec578e2ee3c9a9fc5e23264380fb2915b3716b0a9e97cb75dcc9edd6f5376bfb",
+      "systemLen": 39464,
+      "toolHash": "4adffcef4e227ab64bc6d13ce1d2409ce4fce67da12416a21806fe824641963c",
+      "toolCount": 32
+    },
+    "drift": {
+      "uiLabel": "Qwen 3.6 Plus",
+      "model": "1Drift-V4jL6mX3yE8d",
+      "systemHash": "ec578e2ee3c9a9fc5e23264380fb2915b3716b0a9e97cb75dcc9edd6f5376bfb",
+      "systemLen": 39464,
+      "toolHash": "4adffcef4e227ab64bc6d13ce1d2409ce4fce67da12416a21806fe824641963c",
+      "toolCount": 32
+    }
+  },
+  "judgment": "The client-emitted main system prompt and tool list are identical across Nexus, Orbit, and Drift in this live comparison."
+}

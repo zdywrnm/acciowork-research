@@ -132,3 +132,75 @@
 28. Tightened redaction on publishable evidence samples:
    - Replaced gateway `sg_k`, request/trace identifiers, and message identifiers with `<REDACTED>` in [p03-routing-sample.redacted.json](/Users/a1-6/research/acciowork/07-raw-evidence/p03-routing-sample.redacted.json)
    - Replaced residual long `thoughtSignature` fields with `<REDACTED>` in [p02-session-topology.redacted.md](/Users/a1-6/research/acciowork/07-raw-evidence/p02-session-topology.redacted.md)
+
+### 2026-04-23
+
+29. Reconfirmed repo cleanliness and current evidence inventory:
+   - `git -C /Users/a1-6/research/acciowork status --short`
+   - `ls -1 /Users/a1-6/research/acciowork`
+   - `ls -1 /Users/a1-6/research/acciowork/07-raw-evidence`
+30. Re-read current summary and report files before extending them:
+   - `sed -n '1,240p' 00-summary.md`
+   - `sed -n '1,280p' 01-tech-stack.md`
+   - `sed -n '1,320p' 02-agent-skill-model.md`
+   - `sed -n '1,260p' 03-task-walkthrough.md`
+   - `sed -n '1,260p' 05-ecosystem.md`
+31. Captured remaining `P0-3` MCP CLI evidence:
+   - `sed -n '1,620p' /Applications/Accio.app/Contents/Resources/accio-mcp-cli/accio-mcp.mjs`
+   - `node /Applications/Accio.app/Contents/Resources/accio-mcp-cli/accio-mcp.mjs --help`
+   - `lsof -nP -iTCP:4097 -sTCP:LISTEN`
+   - `curl -sS -D - http://127.0.0.1:4097/health`
+   - `curl -sS -D - http://192.168.0.137:4097/health`
+32. Re-searched the compiled main bundle for MCP coupling and tenant/security-guard hooks:
+   - `rg -n 'accio-mcp-cli|ACCIO_MCP_JSON|ACCIO_TRACE_CONTEXT|/mcp/proxy|/mcp/oauth|/mcp/custom|Forbidden' p02-out-main-index.js`
+   - `rg -n 'ADK_TENANT|tenantOverrides|security-guard|onSecurityGuardResult' p02-out-main-index.js`
+33. Loaded internal bundle modules directly under `ELECTRON_RUN_AS_NODE`:
+   - `require('/Applications/Accio.app/Contents/Resources/app.asar/node_modules/@ali/accio-adk-ts/lib/index.js')`
+   - `require('/Applications/Accio.app/Contents/Resources/app.asar/node_modules/@phoenix-common/security-guard/dist/index.js')`
+34. Inspected module exports and runtime surfaces:
+   - listed `@ali/accio-adk-ts` exports including `AccioLlm`, `createAccioLlmRequest`, `convertRequestToProto`
+   - listed `security-guard` exports including `getSecurityFactorsForWebHeaders` and `urlSign`
+   - printed function bodies for `AccioLlm`, `streamFromTransport`, `convertRequestToProto`, `getSecurityFactorsForWebHeaders`, and `urlSign`
+35. Performed a module-level `tenant` probe without restarting the app:
+   - built synthetic requests with default and fake tenants
+   - compared `createAccioLlmRequest(...)`
+   - intercepted final pre-network HTTP requests through `transportInterceptor.beforeRequest`
+   - reran with fixed request IDs to normalize away request-level entropy
+36. Confirmed live-family model comparison from logs:
+   - compared `Nexus / Orbit / Drift` main requests
+   - verified equal `systemInstruction` hashes and equal tool hashes
+   - checked for explicit rate-limit/quota fields in `sdk.log*`
+37. Collected `P0-4` browser-path evidence:
+   - `rg -n 'BrowserRelay|DirectCDP|port 9222|handshakeOk|connected=false' ~/.accio/logs/sdk.log*`
+   - re-read relay bundle files:
+     - `manifest.json`
+     - `background.js`
+     - `lib/constants.js`
+     - `lib/cdp/relay/connection.js`
+38. Extracted a full persisted browser sub-agent timeline:
+   - `sed -n '1,240p' ~/.accio/accounts/.../subagent-sessions/*.meta.jsonc`
+   - `sed -n '1,80p' ~/.accio/accounts/.../subagent-sessions/*.messages.jsonl`
+   - `rg -n 'sessions_spawn|browser' ~/.accio/accounts/.../agents/.../sessions/*.messages.jsonl`
+   - `sed -n '1,120p' ~/.accio/accounts/.../agents/.../sessions/*.meta.jsonc`
+39. Attempted a positive relay-handshake runtime validation in an isolated Chrome profile:
+   - launched `/Applications/Google Chrome.app` with:
+     - `--user-data-dir=/tmp/accio-relay-profile`
+     - `--load-extension=/Applications/Accio.app/Contents/Resources/chrome-extension/accio-browser-relay`
+   - checked Accio logs for relay state changes
+   - inspected `/tmp/accio-relay-profile` for extension state
+   - closed the temporary Chrome instance and removed the temp profile
+   - Outcome: no positive `connected=true` relay sample was observed; fallback to `9222` remained the runtime-observed path
+40. Performed quick public web search for `dingtalk-neulink standard`:
+   - searched official/public web for DingTalk + NeuLink terms
+   - closest official sources found were DingTalk doc root and tutorials
+   - no authoritative public page for the exact phrase was found in the quick pass
+41. Added new publishable evidence and updated reports:
+   - [p03-mcp-cli-entry.md](/Users/a1-6/research/acciowork/07-raw-evidence/p03-mcp-cli-entry.md)
+   - [p03-live-model-families.redacted.md](/Users/a1-6/research/acciowork/07-raw-evidence/p03-live-model-families.redacted.md)
+   - [p03-system-prompt-compare.redacted.json](/Users/a1-6/research/acciowork/07-raw-evidence/p03-system-prompt-compare.redacted.json)
+   - [p03-sgk-security-guard.md](/Users/a1-6/research/acciowork/07-raw-evidence/p03-sgk-security-guard.md)
+   - [p1-adk-tenant-probe.md](/Users/a1-6/research/acciowork/07-raw-evidence/p1-adk-tenant-probe.md)
+   - [p1-dingtalk-neulink-search.md](/Users/a1-6/research/acciowork/07-raw-evidence/p1-dingtalk-neulink-search.md)
+   - [p04-browser-dual-path.md](/Users/a1-6/research/acciowork/07-raw-evidence/p04-browser-dual-path.md)
+   - [p04-browser-subagent-timeline.redacted.md](/Users/a1-6/research/acciowork/07-raw-evidence/p04-browser-subagent-timeline.redacted.md)
+   - updated [00-summary.md](/Users/a1-6/research/acciowork/00-summary.md), [01-tech-stack.md](/Users/a1-6/research/acciowork/01-tech-stack.md), [03-task-walkthrough.md](/Users/a1-6/research/acciowork/03-task-walkthrough.md), [05-ecosystem.md](/Users/a1-6/research/acciowork/05-ecosystem.md), and [README.md](/Users/a1-6/research/acciowork/README.md)
