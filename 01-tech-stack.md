@@ -2,8 +2,9 @@
 
 ## Stage Status
 
-- Scope covered in this stage: `P0-1 应用形态与技术栈指纹`
-- Status: `initial pass complete`
+- Primary scope: `P0-1 应用形态与技术栈指纹`
+- Added in this revision: `P0-5 execution / permission architecture addendum`
+- Status: `extended pass complete`
 - Target bundle on disk: `/Applications/Accio.app`
 - Important naming note: marketing/product copy uses `Accio Work`, but the macOS bundle name is `Accio.app`
 
@@ -40,6 +41,9 @@ The evidence is strong enough to treat it as:
 | Local MCP edge | Desktop app exposes localhost `4097` gateway; CLI talks to `/mcp/proxy`, `/mcp/oauth`, `/mcp/custom` | [p03-mcp-cli-entry.md](/Users/a1-6/research/acciowork/07-raw-evidence/p03-mcp-cli-entry.md) |
 | Browser dual path | Relay extension defaults to ports `9234/9236`; runtime fallback to raw CDP `9222` observed | [p03-browser-relay-handshake.md](/Users/a1-6/research/acciowork/07-raw-evidence/p03-browser-relay-handshake.md), [p04-browser-dual-path.md](/Users/a1-6/research/acciowork/07-raw-evidence/p04-browser-dual-path.md) |
 | Gateway request signing | Native `security_guard.node` plus transport interceptor adds `sg_k` before network send | [p03-sgk-security-guard.md](/Users/a1-6/research/acciowork/07-raw-evidence/p03-sgk-security-guard.md) |
+| Permission policy | On-disk prefix rules use `allow / ask / deny`; agent-level overrides differ by role | [p05-permission-model.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-permission-model.md), [p05-policy-audit-samples.redacted.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-policy-audit-samples.redacted.md) |
+| Shell sandbox | macOS execution goes through `/usr/bin/sandbox-exec`; `danger_full_access` disables write restrictions | [p05-sandbox-engine.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-sandbox-engine.md) |
+| Pairing / approval routing | `pairings-manager` gates team conversations and IM approval flows; no direct browser-relay link proven | [p05-pairings-manager.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-pairings-manager.md) |
 
 ## Bundle Structure
 
@@ -186,6 +190,75 @@ Three local edge services now have direct evidence:
 3. `Browser Bridge`
    - preferred path is a Chrome relay extension with control port `9234` and relay port `9236`
    - observed runtime fallback is direct Chrome discovery on port `9222`
+
+4. `Permission / Approval`
+   - local prefix-rule policy plus agent overrides decide `allow / ask / deny`
+   - approval outcomes are tracked separately from policy (`approved`, `approved_always`, `denied`, `denied_always`)
+   - macOS command execution is then wrapped in seatbelt sandboxing unless bypassed
+
+5. `Pairing / Channel Identity`
+   - pairings are used for IM identity enrichment, team-member verification, and permission approval routing
+   - current evidence does not connect this subsystem directly to browser relay handshake
+
+## Permission And Execution Stack
+
+Accio’s execution model is more layered than the UI suggests.
+
+### 1. Policy Layer
+
+Local `policy.jsonl` files store prefix rules only:
+
+- `allow`
+- `ask`
+- `deny`
+
+There is no separate policy value called `restricted` in the current build.
+
+Important behavior from the main bundle:
+
+- unmatched commands currently default to `allow`
+- some rules can carry `bypassSandbox=true`
+- agent-level policies can override the account default
+
+### 2. Approval Layer
+
+Runtime approval states are a different enum:
+
+- `approved`
+- `approved_always`
+- `denied`
+- `denied_always`
+- `abort`
+
+This is the right interpretation of the “four-level” permission concept users perceive in the product: it is an approval-state model layered on top of a simpler policy file.
+
+### 3. Sandbox Layer
+
+On macOS, shell/file execution uses real seatbelt sandboxing:
+
+- backend: `seatbelt`
+- launcher: `/usr/bin/sandbox-exec`
+- normal scoped mode: `read_write_cwd`
+- unrestricted mode: `danger_full_access`
+
+Observed policy generation shows:
+
+- `danger_full_access` expands file-write permission to `^/`
+- `read_write_cwd` derives writable roots from the execution context
+
+### 4. Audit Layer
+
+Each agent has its own `permissions/audit.jsonl`, logging:
+
+- `toolName`
+- `cwd`
+- `rwArray`
+- `filePath` or `command`
+- `action`
+- `reason`
+- agent/conversation linkage
+
+That makes the permission model explicitly multi-agent and auditable.
 
 ## First-Pass Architecture Sketch
 

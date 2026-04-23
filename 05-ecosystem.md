@@ -75,3 +75,18 @@ Evidence:
 1. Accio’s practical extension surface is already `desktop app + localhost gateway + custom MCP servers`, which is directly relevant to an open clone.
 2. The presence of tenant override env vars is interesting, but current evidence does not justify designing our clone around a hidden BYOK backdoor.
 3. For DingTalk specifically, we should assume any `neulink standard` wording is internal or undocumented until a public primary source appears.
+
+## Pairings and Channel Approvals
+
+An important adjacent subsystem surfaced in the bundle:
+
+- `pairings-manager`
+- `channel.pairings`
+- team-member verification errors like `TEAM_CHANNEL_MEMBER_NOT_PAIRED`
+
+Current interpretation:
+
+1. pairings are primarily about `IM/channel identity + permission approval routing`
+2. they are used to enrich display names, verify team members, and notify approval requests in IM
+3. this is distinct from the MCP/custom-server extension surface
+4. I do **not** yet have evidence that pairings are required for the Chrome relay path itself

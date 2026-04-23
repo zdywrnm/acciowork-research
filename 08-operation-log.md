@@ -204,3 +204,26 @@
    - [p04-browser-dual-path.md](/Users/a1-6/research/acciowork/07-raw-evidence/p04-browser-dual-path.md)
    - [p04-browser-subagent-timeline.redacted.md](/Users/a1-6/research/acciowork/07-raw-evidence/p04-browser-subagent-timeline.redacted.md)
    - updated [00-summary.md](/Users/a1-6/research/acciowork/00-summary.md), [01-tech-stack.md](/Users/a1-6/research/acciowork/01-tech-stack.md), [03-task-walkthrough.md](/Users/a1-6/research/acciowork/03-task-walkthrough.md), [05-ecosystem.md](/Users/a1-6/research/acciowork/05-ecosystem.md), and [README.md](/Users/a1-6/research/acciowork/README.md)
+42. Collected `P0-5` permission evidence from local policy and audit stores:
+   - Python inspection over `/Users/a1-6/.accio/accounts/1758713785/permissions/policy.jsonl`
+   - Python inspection over `/Users/a1-6/.accio/accounts/1758713785/agents/*/permissions/audit.jsonl`
+   - enumerated account-level decision counts, `bypassSandbox` counts, ask/deny prefixes, and agent-level overrides
+43. Re-searched the compiled main bundle for permission and sandbox internals:
+   - extracted snippets around `checkCommand(...)`, `renderDecisionForUnmatchedCommand`, `sandbox-exec`, `danger_full_access`, `approved_always`, `denied_always`, `tool.permission.auto_granted`
+   - confirmed unmatched-command fallback and macOS seatbelt usage
+44. Re-searched the compiled main bundle for `pairings-manager` responsibilities:
+   - extracted snippets around `getPairingsManager`, `channel.pairings`, `TEAM_CHANNEL_MEMBER_NOT_PAIRED`, `notifyPermissionRequesterByIM`
+   - checked local pairings directory state under `/Users/a1-6/.accio/accounts/1758713785/pairings`
+45. Performed the bounded `P0-4.5` relay retry review:
+   - reviewed the prior isolated Chrome launch with `--user-data-dir`, `--load-extension`, and `--remote-debugging-port=9222`
+   - retained the result as a limited retry with no positive relay handshake
+46. Extracted a public-safe live `tools[]` request sample:
+   - parsed `~/.accio/logs/sdk.log` for an `adk.llm.call` entry with `toolCount=32`
+   - generated [p1-live-tools-schema.redacted.json](/Users/a1-6/research/acciowork/07-raw-evidence/p1-live-tools-schema.redacted.json) with redacted user content and system prompt body, keeping the full tool schema
+47. Added new evidence files and updated reports:
+   - [p04-relay-retry-limited.md](/Users/a1-6/research/acciowork/07-raw-evidence/p04-relay-retry-limited.md)
+   - [p05-permission-model.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-permission-model.md)
+   - [p05-policy-audit-samples.redacted.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-policy-audit-samples.redacted.md)
+   - [p05-sandbox-engine.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-sandbox-engine.md)
+   - [p05-pairings-manager.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-pairings-manager.md)
+   - updated [00-summary.md](/Users/a1-6/research/acciowork/00-summary.md), [01-tech-stack.md](/Users/a1-6/research/acciowork/01-tech-stack.md), [04-pain-points.md](/Users/a1-6/research/acciowork/04-pain-points.md), [05-ecosystem.md](/Users/a1-6/research/acciowork/05-ecosystem.md), [README.md](/Users/a1-6/research/acciowork/README.md)

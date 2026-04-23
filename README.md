@@ -35,6 +35,7 @@
 ├── 06-screenshots/
 │   ├── p0-finder-contents-cropped.png
 │   ├── p0-finder-contents.png
+│   ├── p05-ui-permission-picker.png
 │   ├── p0-finder-resources-cropped.png
 │   └── p0-finder-resources.png
 ├── 07-raw-evidence/
@@ -76,8 +77,14 @@
 │   ├── p03-sgk-security-guard.md
 │   ├── p03-system-prompt-compare.redacted.json
 │   ├── p04-browser-dual-path.md
+│   ├── p04-relay-retry-limited.md
 │   ├── p04-browser-subagent-timeline.redacted.md
+│   ├── p05-pairings-manager.md
+│   ├── p05-permission-model.md
+│   ├── p05-policy-audit-samples.redacted.md
+│   ├── p05-sandbox-engine.md
 │   ├── p1-adk-tenant-probe.md
+│   ├── p1-live-tools-schema.redacted.json
 │   └── p1-dingtalk-neulink-search.md
 └── 08-operation-log.md
 ```

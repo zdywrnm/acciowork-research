@@ -7,15 +7,17 @@
   - `P0-1 应用形态与技术栈指纹`
   - `P0-2 Agent / Skill 数据模型`
   - `P0-3 模型网关`
-  - `P0-4 浏览器自动化` initial pass
+  - `P0-4 浏览器自动化` initial pass + limited retry
+  - `P0-5 权限模型`
   - `P1` quick checks on MCP/BYOK and DingTalk public docs
 - Current status:
   - `P0-1 complete`
   - `P0-2 main pass complete`
   - `P0-3 complete`
-  - `P0-4 initial evidence complete`
-  - `P0-5 not started`
+  - `P0-4 fallback path complete; positive relay handshake still incomplete`
+  - `P0-5 complete`
   - `P1-7 / P1-8 partial`
+  - `P1 live tools schema sample complete`
 
 ## Key Judgments
 
@@ -39,6 +41,15 @@
 18. The fallback path is positively observed in runtime logs. A temporary Chrome profile loaded with the bundled relay extension did not complete the relay handshake during this round, so relay runtime validation remains partial.
 19. Browser sub-agents are true persisted sessions with their own prompt, tool chain, and timestamps. One captured Alibaba task ran from `2026-04-23T05:13:14.767Z` to `2026-04-23T05:13:52.370Z`, using `browser -> write -> browser -> write -> browser`.
 20. No explicit rate-limit or remaining-quota fields were observed in the captured `adk.llm.response` / `llm.call` traces. Credit/quota UX appears to come from separate entitlement endpoints such as `/api/entitlement/quota`, not from the LLM response body itself.
+21. The permission model is a three-layer stack, not a single four-level switch: `policy decision (allow/ask/deny)` + `user approval result (approved / approved_always / denied / denied_always / abort)` + `sandbox scope (read_only / read_write_cwd / danger_full_access)`.
+22. The current desktop UI exposes only two top-level execution modes: `默认权限` and `完全访问权限`; I did not find a separate user-facing `restricted` mode in this build.
+23. Account-level `policy.jsonl` currently has `120` prefix rules: `104 allow`, `6 ask`, `10 deny`, with `43` rules carrying `bypassSandbox=true`.
+24. Agent-level policy overrides are real and materially different by agent. `Shopify Operator` asks for `bash/browser/apply_patch`, while `Accio` and `Coder` auto-allow `write/edit/apply_patch`.
+25. On macOS, terminal/file execution is enforced through real seatbelt sandboxing via `/usr/bin/sandbox-exec`, not only by soft policy checks.
+26. `danger_full_access` expands the seatbelt file-write policy to `^/`, while `read_write_cwd` constrains writes to derived writable roots.
+27. The unmatched-command fallback in the permission engine is currently `allow`; safety then depends on sandbox scope unless the matched rule also carries `bypassSandbox=true`.
+28. `pairings-manager` is an IM/team pairing and approval-routing subsystem. It gates team conversations, enriches IM identities, and routes permission approvals over channels; no direct browser-relay coupling is proven yet.
+29. A live `32-tool` LLM request body was captured and redacted. The tool array confirms that Accio sends a full runtime tool schema to the gateway, including file, shell, browser-orchestration, task, memory, image, Gmail-listener, and product-supplier tools.
 
 ## What This Means for Our Clone
 
@@ -75,10 +86,16 @@
 - Tenant probe: [p1-adk-tenant-probe.md](/Users/a1-6/research/acciowork/07-raw-evidence/p1-adk-tenant-probe.md)
 - Browser dual-path evidence: [p04-browser-dual-path.md](/Users/a1-6/research/acciowork/07-raw-evidence/p04-browser-dual-path.md)
 - Browser sub-agent timing: [p04-browser-subagent-timeline.redacted.md](/Users/a1-6/research/acciowork/07-raw-evidence/p04-browser-subagent-timeline.redacted.md)
+- Permission picker screenshot: [p05-ui-permission-picker.png](/Users/a1-6/research/acciowork/06-screenshots/p05-ui-permission-picker.png)
+- Permission model: [p05-permission-model.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-permission-model.md)
+- Policy/audit samples: [p05-policy-audit-samples.redacted.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-policy-audit-samples.redacted.md)
+- Sandbox engine: [p05-sandbox-engine.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-sandbox-engine.md)
+- Pairings manager: [p05-pairings-manager.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-pairings-manager.md)
+- Limited relay retry: [p04-relay-retry-limited.md](/Users/a1-6/research/acciowork/07-raw-evidence/p04-relay-retry-limited.md)
+- Live 32-tool request body: [p1-live-tools-schema.redacted.json](/Users/a1-6/research/acciowork/07-raw-evidence/p1-live-tools-schema.redacted.json)
 
 ## Immediate Next Steps
 
-1. Finish `P0-4`: obtain a positive runtime relay-handshake sample, not only fallback evidence
-2. Start `P0-5`: permission model from UI + local policy files
-3. Expand `P1-6`: two more real scenario walkthroughs besides the Alibaba browser run
-4. Expand `P1-7 / P1-8`: connector matrix and marketplace/developer workflow
+1. Expand `P1-6`: two more real scenario walkthroughs besides the Alibaba browser run
+2. Expand `P1-7 / P1-8`: connector matrix and marketplace/developer workflow
+3. Treat relay positive-handshake proof as optional follow-up unless new product-side pairing state becomes available
