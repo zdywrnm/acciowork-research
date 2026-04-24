@@ -32,6 +32,11 @@
 ├── 04-pain-points.md
 ├── 05-ecosystem.md
 ├── README.md
+├── opentrad-design/
+│   ├── 10-cc-integration.md
+│   ├── 11-reference-projects.md
+│   ├── 12-skill-shortlist.md
+│   └── 13-summary-for-architect.md
 ├── 06-screenshots/
 │   ├── p0-finder-contents-cropped.png
 │   ├── p0-finder-contents.png
@@ -53,6 +58,9 @@
 │   ├── p0-resources.txt
 │   ├── p0-ui-state-fingerprints.txt
 │   ├── p0-unpacked-node-modules.txt
+│   ├── cc-local-cli-probe.redacted.md
+│   ├── cc-official-docs-evidence.md
+│   ├── cc-reference-projects-evidence.md
 │   ├── p02-agent-core-sample.md
 │   ├── p02-agent-profile-sample.redacted.jsonc
 │   ├── p02-main-exports.txt

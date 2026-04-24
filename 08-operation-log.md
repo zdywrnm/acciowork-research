@@ -227,3 +227,42 @@
    - [p05-sandbox-engine.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-sandbox-engine.md)
    - [p05-pairings-manager.md](/Users/a1-6/research/acciowork/07-raw-evidence/p05-pairings-manager.md)
    - updated [00-summary.md](/Users/a1-6/research/acciowork/00-summary.md), [01-tech-stack.md](/Users/a1-6/research/acciowork/01-tech-stack.md), [04-pain-points.md](/Users/a1-6/research/acciowork/04-pain-points.md), [05-ecosystem.md](/Users/a1-6/research/acciowork/05-ecosystem.md), [README.md](/Users/a1-6/research/acciowork/README.md)
+48. Started final OpenTrad design pre-research under `opentrad-design/`:
+   - created `/Users/a1-6/research/acciowork/opentrad-design`
+   - checked working tree status
+49. Probed local Claude Code CLI without reading credential contents:
+   - `command -v claude`
+   - `claude --version`
+   - `claude --help`
+   - `claude auth status --text` and redacted account fields
+   - `claude auth login --help`
+   - `claude mcp --help`, `claude mcp add --help`, `claude mcp serve --help`
+   - `claude remote-control --help`
+50. Ran two minimal Claude Code non-interactive samples:
+   - `claude -p --output-format json --tools "" --no-chrome --max-turns 1 "Return exactly OK."`
+   - `claude -p --output-format stream-json --verbose --tools "" --no-chrome --max-turns 1 --model haiku "Return exactly OK."`
+   - stored only redacted output shapes in [cc-local-cli-probe.redacted.md](/Users/a1-6/research/acciowork/07-raw-evidence/cc-local-cli-probe.redacted.md)
+51. Verified local session persistence paths without reading transcript content:
+   - `find ~/.claude/projects/-Users-a1-6-research-acciowork -maxdepth 2 -type f`
+52. Researched official Claude Code and Claude Agent SDK docs:
+   - CLI reference
+   - Agent SDK overview and TypeScript reference
+   - MCP configuration
+   - authentication and setup
+   - sessions and session storage
+   - Remote Control
+   - Anthropic Claude Code GitHub repo
+53. Performed quick architecture scan of reference projects:
+   - Cline
+   - Open WebUI
+   - Cherry Studio
+   - LibreChat
+   - Zed Agent Panel / External Agents
+   - used public GitHub/docs pages and package metadata probes only
+54. Wrote final OpenTrad design research deliverables:
+   - [10-cc-integration.md](/Users/a1-6/research/acciowork/opentrad-design/10-cc-integration.md)
+   - [11-reference-projects.md](/Users/a1-6/research/acciowork/opentrad-design/11-reference-projects.md)
+   - [12-skill-shortlist.md](/Users/a1-6/research/acciowork/opentrad-design/12-skill-shortlist.md)
+   - [13-summary-for-architect.md](/Users/a1-6/research/acciowork/opentrad-design/13-summary-for-architect.md)
+   - evidence files with `cc-*` prefix under [07-raw-evidence](/Users/a1-6/research/acciowork/07-raw-evidence)
+   - updated [README.md](/Users/a1-6/research/acciowork/README.md) directory index
